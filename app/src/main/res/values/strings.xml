@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AppMoney</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="income_money">Tiền Thu</string>
+    <string name="expenditure_money">Tiền Chi</string>
+    <string name="save_income">Nhập Khoản Thu</string>
+    <string name="save_expenditure">Nhập Khoản Chi</string>
+    <string name="back_button_description">Back</string>
+    <string name="create_new_category">Tạo mới</string>
+    <string name="transaction_income">Khoản thu</string>
+    <string name="transaction_expenditure">Khoản chi</string>
+    <string name="cat_expenditure">Expenditure</string>
+    <string name="cat_income">Income</string>
+    <string name="hint_search">Tìm kiếm giao dịch</string>
+
+
+</resources>

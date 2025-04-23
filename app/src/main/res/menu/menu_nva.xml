@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_input"
+        android:icon="@drawable/input"
+        android:title="Nhập vào" />
+    <item
+        android:id="@+id/item_history_trans"
+        android:icon="@drawable/transaction"
+        android:title="Giao dịch" />
+    <item
+        android:id="@+id/item_report"
+        android:icon="@drawable/report"
+        android:title="Báo cáo" />
+    <item
+        android:id="@+id/item_more"
+        android:icon="@drawable/more"
+        android:title="Khác" />
+</menu>

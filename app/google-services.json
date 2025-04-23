@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "724530123449",
+    "project_id": "spendingbook-5acaa",
+    "storage_bucket": "spendingbook-5acaa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724530123449:android:dc3503514a59926ad2c168",
+        "android_client_info": {
+          "package_name": "com.example.appmoney"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMJz3Ecj49GPPOKVBDoUVbYz5CbsbLnk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

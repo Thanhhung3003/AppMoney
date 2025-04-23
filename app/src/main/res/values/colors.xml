@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color> <!-- Màu chính của ứng dụng -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Màu chính khi ở chế độ tối -->
+    <color name="colorPrimaryLight">#BB86FC</color> <!-- Phiên bản sáng hơn của màu chính -->
+    <color name="colorAccent">#03DAC5</color> <!-- Màu nhấn -->
+    <color name="colorSecondary">#018786</color> <!-- Màu phụ trợ -->
+    <color name="colorBackgroundLight">#FFFFFF</color> <!-- Nền trắng sáng -->
+    <color name="colorBackgroundDark">#121212</color> <!-- Nền tối -->
+    <color name="colorSurface">#F5F5F5</color> <!-- Màu nền phụ -->
+    <color name="colorOverlay">#A6000000</color> <!-- Lớp phủ trong suốt -->
+    <color name="colorTextPrimary">#212121</color> <!-- Văn bản chính -->
+    <color name="colorTextSecondary">#757575</color> <!-- Văn bản phụ -->
+    <color name="colorTextHint">#9E9E9E</color> <!-- Gợi ý nhập -->
+    <color name="colorTextError">#B00020</color> <!-- Thông báo lỗi -->
+    <color name="colorBorder">#DDDDDD</color> <!-- Màu viền chung -->
+    <color name="colorDivider">#E0E0E0</color> <!-- Đường phân cách -->
+    <color name="colorButtonNormal">#6200EE</color> <!-- Màu mặc định -->
+    <color name="colorButtonPressed">#3700B3</color> <!-- Khi nhấn -->
+    <color name="colorButtonDisabled">#BDBDBD</color> <!-- Khi bị vô hiệu hóa -->
+    <color name="colorCardBackground">#FFFFFF</color> <!-- Màu nền CardView -->
+    <color name="colorCardShadow">#E0E0E0</color> <!-- Đổ bóng -->
+    <color name="colorButtonStart">#FF5722</color> <!-- Màu bắt đầu -->
+    <color name="colorButtonEnd">#FFC107</color> <!-- Màu kết thúc -->
+    <color name="colorSuccess">#4CAF50</color> <!-- Màu thành công (Xanh lá) -->
+    <color name="colorWarning">#FFC107</color> <!-- Cảnh báo (Vàng) -->
+    <color name="colorError">#D32F2F</color> <!-- Báo lỗi (Đỏ) -->
+    <color name="colorInfo">#2196F3</color> <!-- Thông tin (Xanh dương) -->
+    <color name="colorBlue">#1976D2</color>
+    <color name="colorGreen">#388E3C</color>
+    <color name="colorRed">#D32F2F</color>
+    <color name="colorYellow">#FBC02D</color>
+    <color name="colorOrange">#F57C00</color>
+    <color name="colorPurple">#7B1FA2</color>
+    <color name="colorPink">#C2185B</color>
+    <color name="colorTeal">#00796B</color>
+    <color name="colorGray">#9E9E9E</color>
+    <color name="colorBorderLight">#E0E0E0</color> <!-- Viền nhạt -->
+    <color name="colorBorderMedium">#BDBDBD</color> <!-- Viền trung bình -->
+    <color name="colorBorderDark">#757575</color> <!-- Viền đậm -->
+    <color name="colorBorderActive">#6200EE</color> <!-- Viền khi được chọn -->
+    <color name="colorBorderFocused">#3700B3</color> <!-- Viền khi có focus -->
+    <color name="colorBorderDisabled">#BDBDBD</color> <!-- Viền khi bị vô hiệu hóa -->
+    <color name="colorBorderError">#D32F2F</color> <!-- Viền báo lỗi -->
+    <color name="colorBorderSuccess">#388E3C</color> <!-- Viền thành công -->
+    <color name="colorCardBorder">#E0E0E0</color> <!-- Viền cho CardView -->
+    <color name="colorButtonBorder">#6200EE</color> <!-- Viền cho Button -->
+    <color name="colorContainerBorder">#BDBDBD</color> <!-- Viền chung cho container -->
+    <color name="line">#b2b2b2</color>
+    <color name="backgroundtab">#e8e8ea</color>
+    <color name="boderCardSelected">#bababa</color>
+
+
+</resources>
