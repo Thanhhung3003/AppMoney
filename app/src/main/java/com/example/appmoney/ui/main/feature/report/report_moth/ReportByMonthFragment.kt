@@ -103,7 +103,7 @@ class ReportByMonthFragment : Fragment() {
     }
 
     private fun fetchData(date: String) {
-        viewModel.getTransbyMonth(date) { err ->
+        viewModel.getTransByMonth(date) { err ->
             showApiResultToast(false,err)
         }
     }

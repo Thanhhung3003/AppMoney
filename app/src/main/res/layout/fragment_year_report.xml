@@ -3,13 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".ui.main.feature.report.report_year.ReportByYearFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnPre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Ngày trước"
+                app:srcCompat="@drawable/left" />
+
+            <TextView
+                android:id="@+id/tvMonthDate"
+                android:layout_width="317dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/boder_edt_money"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="Năm 2025"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnAfter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Ngày sau"
+                app:srcCompat="@drawable/right" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorCardShadow" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcReportYear"
+            android:layout_width="match_parent"
+            android:layout_height="460dp"
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false"
+            android:contentDescription="Recycelview report year"/>
+
+
+    </LinearLayout>
+
 
 </FrameLayout>

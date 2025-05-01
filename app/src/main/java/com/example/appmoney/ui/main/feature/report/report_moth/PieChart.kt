@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import com.example.appmoney.R
-import com.example.appmoney.ui.main.feature.report.CategoryDetail
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmoney.R
 import com.example.appmoney.databinding.ItemReportBinding
-import com.example.appmoney.ui.main.feature.report.CategoryDetail
 
 class CatDetailDiffCalBack: DiffUtil.ItemCallback<CategoryDetail>() {
     override fun areItemsTheSame(oldItem: CategoryDetail, newItem: CategoryDetail): Boolean {

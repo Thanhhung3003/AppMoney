@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.appmoney.data.model.Category
-import com.example.appmoney.data.model.Transaction
 import com.example.appmoney.data.repository.Repository
+import com.example.appmoney.ui.common.extensions.toDetail
+import com.example.appmoney.ui.common.helper.TimeHelper
 import com.google.firebase.Timestamp
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -22,38 +23,13 @@ class HistoryTransViewModel: ViewModel() {
     private val _transactionsDetail = MutableLiveData<List<TransactionDetail>>()
     val transactionsDetail: LiveData<List<TransactionDetail>> = _transactionsDetail
 
-//    fun getTrans(listCategory: List<Category>, onFailure:(String)->Unit){
-//        repository.getTransWithCat(onSuccess = { transactions ->
-//            val transactionDetails = transactions.map { trans ->
-//                val matchedCategory = listCategory.find { it.idCat == trans.categoryId }
-//                trans.toDetail(matchedCategory)
-//            }
-//
-//            _transactionsDetail.value = transactionDetails
-//            allTransactions = transactionDetails.toMutableList()
-//
-//        }, onFailure)
-//    }
     fun getTransByMonth(input: String,listCategory: List<Category>,onFailure: (String) -> Unit){
         try {
             val sdf = SimpleDateFormat("MM/yyyy", Locale.getDefault())
             val date = sdf.parse(input) ?: return
-            val calendar = Calendar.getInstance()
-            calendar.time = date
 
-            calendar.set(Calendar.DAY_OF_MONTH,1)
-            calendar.set(Calendar.HOUR_OF_DAY, 0)
-            calendar.set(Calendar.MINUTE, 0)
-            calendar.set(Calendar.SECOND, 0)
-            calendar.set(Calendar.MILLISECOND, 0)
-            val dateStart = Timestamp(calendar.time)
-
-            calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH))
-            calendar.set(Calendar.HOUR_OF_DAY, 23)
-            calendar.set(Calendar.MINUTE, 59)
-            calendar.set(Calendar.SECOND, 59)
-            calendar.set(Calendar.MILLISECOND, 999)
-            val dateEnd = Timestamp(calendar.time)
+            val dateStart = TimeHelper.getStartOfMonth(date)
+            val dateEnd = TimeHelper.getEndOfMonth(date)
 
             repository.getTransByTimes(dateStart,dateEnd,
                 onSuccess = { transactions ->
@@ -85,18 +61,4 @@ class HistoryTransViewModel: ViewModel() {
             _transactionsDetail.value = result
         }
     }
-}
-
-fun Transaction.toDetail(category: Category?): TransactionDetail {
-    return TransactionDetail(
-        idTrans = idTrans,
-        amount = amount,
-        date = date,
-        note = note,
-        categoryId = categoryId,
-        typeTrans = typeTrans,
-        image = category?.image,
-        color = category?.color,
-        desCat = category?.desCat,
-    )
 }

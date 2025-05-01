@@ -25,7 +25,6 @@ import com.example.appmoney.ui.main.main_screen.navigateFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import java.io.InputStream
 import java.util.Calendar
 
 
@@ -52,6 +51,10 @@ class InputFragment : Fragment() {
         viewModel = ViewModelProvider(this)[InputViewModel::class.java]
         sharedViewModel = ViewModelProvider(requireActivity())[ScreenHomeViewModel::class.java]
 
+        val today = Calendar.getInstance()
+        viewModel.updateState(viewModel.state.value?.copy(date = today))
+        binding.tvDate.text = TimeHelper.getByFormat(today, TimeFormat.Date)
+
         setupViewPager()
         setupObserver()
         setupTabSelected()
@@ -71,7 +74,7 @@ class InputFragment : Fragment() {
         }
         binding.edtMoney.doOnTextChanged { text, _, _, _ ->
             val amountText = text.toString()
-            val amount = if (amountText.isNotBlank()) amountText.toLong() else 0L
+            val amount = amountText.toLongOrNull() ?: 0L
             viewModel.updateState(viewModel.state.value?.copy(amount = amount))
         }
 
@@ -92,7 +95,7 @@ class InputFragment : Fragment() {
     // add Transaction----------------
     private fun handleDoneButton() {
         val currentTab = viewModel.selectedTab.value ?: 0
-        (adapter.map[currentTab] as? InputFragmentBehavior)?.getSelectedCategory()
+        (adapter.map[currentTab] as? InputFragmentBehaviour)?.getSelectedCategory()
             ?.let { category ->
                 val typeTrans = if (TabObject.tabPosition == 0) {
                     getString(R.string.cat_expenditure)
@@ -135,13 +138,15 @@ class InputFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner) {
             val dateString = TimeHelper.getByFormat(it.date, TimeFormat.Date)
             binding.apply {
-                val amountText = it.amount.toString()
-                if (binding.edtMoney.text.toString() != amountText) {
-                    binding.edtMoney.setText(amountText)
-                }
-                tvDate.text = dateString
-                if (edtNote.text.toString() != it.note) {
-                    edtNote.setText(it.note)
+                if (it.amount != 0L) {
+                    val amountText = it.amount.toString()
+                    if (binding.edtMoney.text.toString() != amountText) {
+                        binding.edtMoney.setText(amountText)
+                    }
+                } else {
+                    if (binding.edtMoney.text.toString().isNotBlank()) {
+                        binding.edtMoney.setText("")
+                    }
                 }
             }
 
@@ -164,8 +169,11 @@ class InputFragment : Fragment() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .build()
         datePicker.addOnPositiveButtonClickListener { selection ->
-            val calendar = viewModel.state.value?.date ?: Calendar.getInstance()
-            calendar.timeInMillis = selection
+            val calendar = Calendar.getInstance().apply {
+                timeInMillis = selection
+            }
+            viewModel.updateState(viewModel.state.value?.copy(date = calendar))
+            binding.tvDate.text = TimeHelper.getByFormat(calendar, TimeFormat.Date)
         }
         datePicker.show(childFragmentManager, "DATE_PICKER")
     }
@@ -180,6 +188,7 @@ class InputFragment : Fragment() {
         }
         calendar.add(Calendar.DAY_OF_MONTH, day)
         viewModel.updateState(viewModel.state.value?.copy(date = calendar))
+        binding.tvDate.text = TimeHelper.getByFormat(calendar, TimeFormat.Date)
     }
 
     // setup Tab and ViewPager-----------------------------------
@@ -257,7 +266,7 @@ class InputFragment : Fragment() {
                 viewModel.updateState(newState)
 
                 val categoryId = it.categoryId
-                (adapter.map[tab] as? InputFragmentBehavior)?.setSelectedCategoryById(categoryId)
+                (adapter.map[tab] as? InputFragmentBehaviour)?.setSelectedCategoryById(categoryId)
             } ?: run {
                 viewModel.updateState(TransactionState())
             }

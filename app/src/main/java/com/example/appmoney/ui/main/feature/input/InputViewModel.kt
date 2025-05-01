@@ -80,8 +80,8 @@ class InputViewModel : ViewModel() {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
-        if (sAmount.toString().isEmpty()) {
-            _err.value = "Bạn chưa nhập số tiền"
+        if (sAmount <= 0) {
+            _err.value = "Bạn chưa nhập số tiền chưa hợp lệ"
             return
         }
         if (sCategoryId == null) {
@@ -108,8 +108,8 @@ class InputViewModel : ViewModel() {
         onFailure: (String) -> Unit
     ) {
 
-        if (sAmount.toString().isEmpty()) {
-            _err.value = "Bạn chưa nhập số tiền"
+        if (sAmount <= 0 ) {
+            _err.value = "Bạn chưa nhập số tiền chưa hợp lệ"
             return
         }
         if (sCategoryId == null) {

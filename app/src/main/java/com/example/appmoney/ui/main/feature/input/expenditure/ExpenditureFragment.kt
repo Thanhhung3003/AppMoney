@@ -8,21 +8,17 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appmoney.data.model.Category
-import com.example.appmoney.data.model.CategoryColor
-import com.example.appmoney.data.model.CategoryImage
 import com.example.appmoney.data.model.CategoryType
 import com.example.appmoney.databinding.FragmentExpenditureBinding
 import com.example.appmoney.ui.common.adapter.CategoryAdapter
 import com.example.appmoney.ui.common.adapter.CategoryListener
-import com.example.appmoney.ui.common.helper.showApiResultToast
-import com.example.appmoney.ui.main.feature.input.InputFragmentBehavior
-import com.example.appmoney.ui.main.feature.input.InputViewModel
+import com.example.appmoney.ui.main.feature.input.InputFragmentBehaviour
 import com.example.appmoney.ui.main.main_screen.AppScreen
 import com.example.appmoney.ui.main.main_screen.ScreenHomeViewModel
 import com.example.appmoney.ui.main.main_screen.navigateFragment
 
 
-class ExpenditureFragment : Fragment(),CategoryListener, InputFragmentBehavior {
+class ExpenditureFragment : Fragment(),CategoryListener, InputFragmentBehaviour {
     private var _binding : FragmentExpenditureBinding? = null
     private val binding get() = _binding!!
     private val adapter = CategoryAdapter()

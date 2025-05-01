@@ -8,7 +8,7 @@ import java.util.Calendar
 
 class MonthYearDialog(
     private val context: Context,
-    private val ShowMonthYear: (moth: Int, year: Int) -> Unit
+    private val showMonthYear: (moth: Int, year: Int) -> Unit
 ) {
     private val calendar = Calendar.getInstance()
 
@@ -36,7 +36,7 @@ class MonthYearDialog(
             btnOk.setOnClickListener {
                 val moth = npMonth.value
                 val year = npYear.value
-                ShowMonthYear(moth,year)
+                showMonthYear(moth,year)
                 dialog.dismiss()
             }
             btnCancel.setOnClickListener { dialog.dismiss()}

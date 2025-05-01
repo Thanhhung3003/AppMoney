@@ -11,7 +11,3 @@ data class Transaction(
     val typeTrans: String= "Income"
 ): Serializable {}
 
-data class TransAndCat(
-    val category: Category,
-    val trans: List<Transaction>
-): Serializable {}

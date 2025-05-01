@@ -10,18 +10,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.appmoney.data.model.Category
 import com.example.appmoney.data.model.CategoryType
 import com.example.appmoney.databinding.FragmentIncomeBinding
-import com.example.appmoney.ui.main.feature.categorytype.CatTypeViewModel
 import com.example.appmoney.ui.common.adapter.CategoryAdapter
 import com.example.appmoney.ui.common.adapter.CategoryListener
 import com.example.appmoney.ui.common.helper.showApiResultToast
-import com.example.appmoney.ui.main.feature.input.InputFragmentBehavior
-import com.example.appmoney.ui.main.feature.input.InputViewModel
+import com.example.appmoney.ui.main.feature.input.InputFragmentBehaviour
 import com.example.appmoney.ui.main.main_screen.AppScreen
 import com.example.appmoney.ui.main.main_screen.ScreenHomeViewModel
 import com.example.appmoney.ui.main.main_screen.navigateFragment
 
 
-class IncomeFragment : Fragment(), CategoryListener, InputFragmentBehavior {
+class IncomeFragment : Fragment(), CategoryListener, InputFragmentBehaviour {
     private var _binding: FragmentIncomeBinding? = null
     private val binding get() = _binding!!
     private val adapter = CategoryAdapter()
