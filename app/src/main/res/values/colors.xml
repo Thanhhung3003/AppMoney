@@ -51,6 +51,10 @@
     <color name="line">#b2b2b2</color>
     <color name="backgroundtab">#e8e8ea</color>
     <color name="boderCardSelected">#bababa</color>
+    <color name="colorBrown">#A52A2A</color>
+    <color name="colorDarkBlue">#003366</color>
+
+
 
 
 </resources>

@@ -48,14 +48,14 @@ class LoginActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         goToScreenHome()
                     }else {
-                        Toast.makeText(this@LoginActivity, "Authentication failed.", Toast.LENGTH_SHORT,).show()
+                        Toast.makeText(this@LoginActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
     }
 
     private fun goToScreenHome() {
-        var i = Intent(this, ScreenHomeActivity::class.java)
+        val i = Intent(this, ScreenHomeActivity::class.java)
         startActivity(i)
     }
 

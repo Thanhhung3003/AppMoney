@@ -8,7 +8,10 @@ import com.example.appmoney.databinding.ActivityRegisterBinding
 import com.example.appmoney.ui.login.LoginActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -68,11 +71,30 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     val user = auth.currentUser
+                    createUser(user)
                     goToLogin()
                 }else{
                     showToast("Đăng ký thất bại: ${task.exception?.message}")
                 }
             }
+    }
+
+    private fun createUser(user: FirebaseUser?) {
+        user?.let {
+            val db = Firebase.firestore
+            val userData = hashMapOf(
+                "email" to user.email,
+                "createAt" to System.currentTimeMillis(),
+                "role" to "user"
+            )
+            db.collection("User").document(user.uid)
+                .set(userData)
+                .addOnSuccessListener {
+                    Toast.makeText(this,"Thành công",Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(this,"Thất bại",Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     private fun goToLogin() {

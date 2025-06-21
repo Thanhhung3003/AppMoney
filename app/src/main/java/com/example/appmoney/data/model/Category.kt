@@ -29,7 +29,23 @@ enum class CategoryImage(val resource: Int) {
     BASKET(R.drawable.basket),
     GAME(R.drawable.game),
     NULL(R.drawable.resource_null),
-
+    INVEST(R.drawable.businessgrowth),
+    CALL(R.drawable.call),
+    CUT(R.drawable.cut),
+    ELECTRIC(R.drawable.electric),
+    EDUCATION(R.drawable.education),
+    FOOTBALL(R.drawable.football),
+    FRUIT(R.drawable.fruit),
+    BYCICLE(R.drawable.bycicle),
+    FUELSTATION(R.drawable.fuelstation),
+    GIFT(R.drawable.gift),
+    LIGHT(R.drawable.light),
+    MEDICAL(R.drawable.medical),
+    MUSIC(R.drawable.music),
+    SKINCARE(R.drawable.skincare),
+    TELEVISION(R.drawable.television),
+    TSHIRT(R.drawable.tshirt),
+    WIFI(R.drawable.wifi)
     ;
 }
 
@@ -47,8 +63,11 @@ enum class CategoryColor(val resource: Int) {
     ORANGE(R.color.colorOrange),
     PURPLE(R.color.colorPurple),
     PINK(R.color.colorPink),
-    TEAL(R.color.colorTeal);
-
+    TEAL(R.color.colorTeal),
+    GRAY(R.color.colorGray),
+    BROWN(R.color.colorBrown),
+    DARK_BLUE(R.color.colorDarkBlue)
+    ;
 }
 data class CategoryColorWrapper(
     val categoryColor: CategoryColor,
