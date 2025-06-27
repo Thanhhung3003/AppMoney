@@ -54,7 +54,7 @@ class IncomeFragment : Fragment(), CategoryListener, InputFragmentBehaviour {
         }
 
         sharedViewModel.incomeList.observe(viewLifecycleOwner) {
-            viewModel.init(it)
+            if(viewModel.categories.value.isNullOrEmpty()) viewModel.init(it)
         }
     }
 

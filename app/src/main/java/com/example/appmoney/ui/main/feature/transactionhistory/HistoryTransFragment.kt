@@ -161,7 +161,7 @@ class HistoryTransFragment : Fragment(),TransDetailListener, SwipeRefreshLayout.
     override fun onItemClick(trans: TransactionDetail) {
         val bundle = BundleHelper.addParam(BUNDLE_KEY_TRANSACTION,trans).build()
         Log.d("InputFragment", "transaction: $trans")
-        requireActivity().navigateFragment(AppScreen.Input,bundle)
+        requireActivity().navigateFragment(AppScreen.Input, bundle)
     }
 
     override fun onRefresh() {

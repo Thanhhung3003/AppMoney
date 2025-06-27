@@ -37,7 +37,7 @@ sealed interface AppScreen {
     }
 }
 
-fun FragmentActivity.navigateFragment(screen: AppScreen, bundle: Bundle? = null) {
+fun FragmentActivity.navigateFragment(screen: AppScreen, bundle: Bundle? = null, isPopBackStack: Boolean = false) {
     val fm = this.supportFragmentManager
     val transaction = fm.beginTransaction()
     val tagName = screen.javaClass.name
@@ -47,6 +47,7 @@ fun FragmentActivity.navigateFragment(screen: AppScreen, bundle: Bundle? = null)
     }
 
     fm.findFragmentByTag(tagName)?.let { previous ->
+        if (isPopBackStack) this.supportFragmentManager.popBackStack(tagName, 0)
         previous.arguments = bundle
         transaction.show(previous)
         transaction.commit()
