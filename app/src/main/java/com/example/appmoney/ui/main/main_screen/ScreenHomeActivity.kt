@@ -63,6 +63,7 @@ class ScreenHomeActivity : AppCompatActivity() {
             dailyReminderWorkRequest)
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         val canBack = this.supportFragmentManager.fragments.size > 1
         when {
@@ -81,6 +82,6 @@ class ScreenHomeActivity : AppCompatActivity() {
             R.id.item_more -> AppScreen.More
             else -> return
         }
-        navigateFragment(screen)
+        navigateFragment(screen, isPopBackStack = true)
     }
 }

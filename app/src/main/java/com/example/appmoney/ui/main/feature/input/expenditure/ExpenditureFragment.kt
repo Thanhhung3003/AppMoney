@@ -61,10 +61,6 @@ class ExpenditureFragment : Fragment(),CategoryListener, InputFragmentBehaviour 
         sharedViewModel = ViewModelProvider(requireActivity())[ScreenHomeViewModel::class.java]
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

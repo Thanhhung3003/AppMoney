@@ -45,6 +45,7 @@ class InputFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -60,12 +61,17 @@ class InputFragment : Fragment() {
         setupTabSelected()
         setupDatePicker()
         bindViewsEvent()
-
     }
 
     private fun bindViewsEvent() {
         binding.btnSave.setOnClickListener {
             handleDoneButton()
+        }
+
+        binding.btnBack.setOnClickListener {
+            viewModel.updateState(TransactionState())
+            requireActivity().navigateFragment(AppScreen.HistoryTrans)
+            binding.btnBack.visibility = View.GONE
         }
 
         binding.edtNote.doOnTextChanged {
@@ -219,6 +225,7 @@ class InputFragment : Fragment() {
     private fun setupViewPager() {
         adapter = InputViewpagerAdapter(childFragmentManager, lifecycle)
         binding.Vp.adapter = adapter
+        binding.Vp.offscreenPageLimit = 2
 
         TabLayoutMediator(binding.tabMoney, binding.Vp) { tab, position ->
             when (position) {
@@ -245,36 +252,37 @@ class InputFragment : Fragment() {
         if (!hidden) {
             binding.Vp.setCurrentItem(TabObject.tabPosition, true)
 
-            val trans =arguments?.getSerializable(BUNDLE_KEY_TRANSACTION, TransactionDetail::class.java)
-            trans?.let {
+            receiveDataFromBundle()
+        }
+    }
 
-                val tab = if (it.typeTrans == "Expenditure") 0 else 1
-                viewModel.setTab(tab)
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun receiveDataFromBundle() {
+        val trans = arguments?.getSerializable(BUNDLE_KEY_TRANSACTION, TransactionDetail::class.java)
+        trans?.let {
 
-                val timeMillis = TimeHelper.stringToTimestamp(it.date)?.toDate()
-                val date = Calendar.getInstance().apply {
-                    timeMillis?.let {
-                        time = timeMillis
-                    }
+            val tab = if (it.typeTrans == "Expenditure") 0 else 1
+            viewModel.setTab(tab)
+
+            val timeMillis = TimeHelper.stringToTimestamp(it.date)?.toDate()
+            val date = Calendar.getInstance().apply {
+                timeMillis?.let {
+                    time = timeMillis
                 }
-                val newState = viewModel.state.value?.copy(
-                    idTrans = it.idTrans,
-                    date = date,
-                    note = it.note,
-                    amount = it.amount,
-                )
-                viewModel.updateState(newState)
+            }
+            val newState = viewModel.state.value?.copy(
+                idTrans = it.idTrans,
+                date = date,
+                note = it.note,
+                amount = it.amount,
+            )
+            viewModel.updateState(newState)
 
-                val categoryId = it.categoryId
-                (adapter.map[tab] as? InputFragmentBehaviour)?.setSelectedCategoryById(categoryId)
-            } ?: run {
-                viewModel.updateState(TransactionState())
-            }
-            binding.btnBack.setOnClickListener {
-                viewModel.updateState(TransactionState())
-                requireActivity().navigateFragment(AppScreen.HistoryTrans)
-                binding.btnBack.visibility = View.GONE
-            }
+            val categoryId = it.categoryId
+            (adapter.map[tab] as? InputFragmentBehaviour)?.setSelectedCategoryById(categoryId)
+
+        } ?: run {
+            viewModel.updateState(TransactionState())
         }
     }
 }
