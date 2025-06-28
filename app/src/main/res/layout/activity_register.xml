@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abhaya_libre_semibold"
                 android:gravity="center"
-                android:text="Welcome to Register"
+                android:text="Đăng kí tài khoản"
                 android:textColor="@color/colorTextError"
                 android:textSize="30dp"
                 android:textStyle="bold"
@@ -59,7 +59,7 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/custom_edt_login"
                 android:drawableStart="@drawable/password"
-                android:hint="Password"
+                android:hint="Mật khẩu"
                 android:inputType="textPassword"
                 android:padding="10dp" />
 
@@ -70,7 +70,7 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/custom_edt_login"
                 android:drawableStart="@drawable/password"
-                android:hint="Confirm Password"
+                android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
                 android:padding="10dp" />
 
@@ -81,7 +81,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="@color/colorButtonStart"
-                android:text="Register" />
+                android:text="Đăng Kí" />
 
             <TextView
                 android:id="@+id/btnBack"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Already have an account? LOGIN"
+                android:text="Bạn đã có tài khoản? ĐĂNG NHẬP"
                 android:textColor="@color/colorButtonStart"
                 android:textStyle="bold" />
         </LinearLayout>

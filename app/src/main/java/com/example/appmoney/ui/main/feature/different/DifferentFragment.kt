@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.appmoney.databinding.FragmentDifferentBinding
 import com.example.appmoney.ui.login.LoginActivity
+import com.example.appmoney.ui.main.main_screen.AppScreen
+import com.example.appmoney.ui.main.main_screen.navigateFragment
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 
@@ -30,6 +32,9 @@ class DifferentFragment : Fragment() {
             Firebase.auth.signOut()
             val i = Intent(requireContext(),LoginActivity::class.java)
             startActivity(i)
+        }
+        binding.btnChangePass.setOnClickListener {
+            requireActivity().navigateFragment(AppScreen.ChangePass)
         }
     }
 

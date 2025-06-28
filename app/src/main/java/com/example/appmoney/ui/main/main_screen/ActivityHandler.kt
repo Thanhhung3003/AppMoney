@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.appmoney.R
 import com.example.appmoney.ui.main.feature.categorytype.CatTypeFragment
+import com.example.appmoney.ui.main.feature.different.changepass.ChangePasswordFragment
 import com.example.appmoney.ui.main.feature.different.DifferentFragment
 import com.example.appmoney.ui.main.feature.edit.EditCategoryFragment
 import com.example.appmoney.ui.main.feature.fixcategory.FixFragment
@@ -19,9 +20,10 @@ sealed interface AppScreen {
     data object Edit: AppScreen
     data object HistoryTrans: AppScreen
     data object Report: AppScreen
-    data object More: AppScreen
+    data object Different: AppScreen
     data object Category: AppScreen
     data object Fix: AppScreen
+    data object ChangePass: AppScreen
 
     fun getScreenInstance(): Fragment {
         return when(this) {
@@ -29,10 +31,11 @@ sealed interface AppScreen {
             Edit -> EditCategoryFragment()
             Income -> IncomeFragment()
             Input -> InputFragment()
-            More -> DifferentFragment()
+            Different -> DifferentFragment()
             Report -> ReportFragment()
             Category -> CatTypeFragment()
             Fix -> FixFragment()
+            ChangePass -> ChangePasswordFragment()
         }
     }
 }

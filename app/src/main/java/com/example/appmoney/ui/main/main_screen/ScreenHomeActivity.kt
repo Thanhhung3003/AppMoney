@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.OneTimeWorkRequest
-import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.appmoney.R
@@ -79,7 +77,7 @@ class ScreenHomeActivity : AppCompatActivity() {
             R.id.item_input -> AppScreen.Input
             R.id.item_history_trans -> AppScreen.HistoryTrans
             R.id.item_report -> AppScreen.Report
-            R.id.item_more -> AppScreen.More
+            R.id.item_different -> AppScreen.Different
             else -> return
         }
         navigateFragment(screen, isPopBackStack = true)
