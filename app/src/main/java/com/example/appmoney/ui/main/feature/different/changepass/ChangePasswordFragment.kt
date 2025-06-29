@@ -35,6 +35,7 @@ class ChangePasswordFragment : Fragment() {
             val newPass = binding.edtNewPassword.text.toString().trim()
             val confirmPass = binding.edtConfirmNewPassword.text.toString().trim()
             viewModel.changePassword(oldPass, newPass, confirmPass)
+            requireActivity().navigateFragment(AppScreen.Different)
         }
         viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

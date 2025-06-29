@@ -29,13 +29,13 @@ class InputViewModel : ViewModel() {
 
     private val _selectedTab = MutableLiveData<Int>()
     val selectedTab: LiveData<Int> = _selectedTab
-
+    // update tab và TabObject
     fun setTab(tab: Int) {
         _selectedTab.value = tab
 
         TabObject.changeTab(tab)
     }
-
+    // Xử lý khi người dùng thêm hoặc cập nhật giao dịch.
     fun handleDoneButton(
         sCategoryId: String,
         typeTrans: String,
@@ -46,6 +46,7 @@ class InputViewModel : ViewModel() {
         val sDate = TimeHelper.getByFormat(date, TimeFormat.Date)
         val sAmount = state.value?.amount ?: 0L
         val sNote = state.value?.note ?: ""
+        // Khi người dùng thêm Transaction thì idTrans = null còn sửa thì khác null
         when (val idTrans = state.value?.idTrans) {
             null ->
                 addTrans(
@@ -69,7 +70,7 @@ class InputViewModel : ViewModel() {
                 )
         }
     }
-
+    // Update 1 Transaction
     private fun updateTrans(
         idTrans: String,
         sCategoryId: String,
@@ -97,7 +98,7 @@ class InputViewModel : ViewModel() {
         )
         repo.updateTrans(idTrans, transaction, onSuccess, onFailure)
     }
-
+    // Thêm 1 Transaction
     fun addTrans(
         sCategoryId: String,
         sDate: String,

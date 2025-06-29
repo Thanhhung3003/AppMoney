@@ -52,6 +52,7 @@ class InputFragment : Fragment() {
         viewModel = ViewModelProvider(this)[InputViewModel::class.java]
         sharedViewModel = ViewModelProvider(requireActivity())[ScreenHomeViewModel::class.java]
 
+        // set ngày hiện tại làm mặc định
         val today = Calendar.getInstance()
         viewModel.updateState(viewModel.state.value?.copy(date = today))
         binding.tvDate.text = TimeHelper.getByFormat(today, TimeFormat.Date)
@@ -101,6 +102,7 @@ class InputFragment : Fragment() {
     // add Transaction----------------
     private fun handleDoneButton() {
         val currentTab = viewModel.selectedTab.value ?: 0
+        // truy xuất fragment và ép kiểu sau đó gọi getSelectedCategory() lấy category được chọn
         (adapter.map[currentTab] as? InputFragmentBehaviour)?.getSelectedCategory()
             ?.let { category ->
                 val typeTrans = if (TabObject.tabPosition == 0) {

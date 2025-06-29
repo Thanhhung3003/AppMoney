@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.appmoney.data.repository.Repository
 import com.example.appmoney.databinding.ActivityRegisterBinding
 import com.example.appmoney.ui.login.LoginActivity
 import com.google.firebase.Firebase
@@ -16,19 +18,42 @@ import com.google.firebase.firestore.firestore
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
+
+    private val repository: Repository = Repository()
+    private lateinit var viewModel: RegisterViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+
         auth = Firebase.auth
         binding.btnRegister.setOnClickListener {
             createAcc()
         }
+        setupObservers()
         binding.btnBack.setOnClickListener {
             goToLogin()
         }
 
+    }
+
+    private fun setupObservers() {
+        viewModel.registerSuccess.observe(this) { success ->
+            if (success) {
+                showToast("Đăng ký thành công")
+                goToLogin()
+            }
+        }
+
+        viewModel.err.observe(this) { err ->
+            err?.let {
+                showToast(err)
+                viewModel.clearError()
+            }
+        }
     }
 
     private fun createAcc() {
@@ -37,7 +62,7 @@ class RegisterActivity : AppCompatActivity() {
         val confirmPassword = binding.edtConfirmPassword.text.toString().trim()
         if (!validateInput(email, password, confirmPassword)) return
 
-        registerUser(email, password)
+        viewModel.registerUser(email, password)
     }
 
     private fun validateInput(email: String, password: String, confirmPassword: String): Boolean {
@@ -63,37 +88,6 @@ class RegisterActivity : AppCompatActivity() {
                 false
             }
             else -> true
-        }
-    }
-
-    private fun registerUser( email: String,password: String){
-        auth.createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    val user = auth.currentUser
-                    createUser(user)
-                    goToLogin()
-                }else{
-                    showToast("Đăng ký thất bại: ${task.exception?.message}")
-                }
-            }
-    }
-
-    private fun createUser(user: FirebaseUser?) {
-        user?.let {
-            val db = Firebase.firestore
-            val userData = hashMapOf(
-                "email" to user.email,
-                "createAt" to System.currentTimeMillis(),
-                "role" to "user"
-            )
-            db.collection("User").document(user.uid)
-                .set(userData)
-                .addOnSuccessListener {
-                    Toast.makeText(this,"Thành công",Toast.LENGTH_SHORT).show()
-                }.addOnFailureListener{
-                    Toast.makeText(this,"Thất bại",Toast.LENGTH_SHORT).show()
-                }
         }
     }
 

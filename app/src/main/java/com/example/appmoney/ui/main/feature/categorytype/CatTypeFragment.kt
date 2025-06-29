@@ -88,7 +88,9 @@ class CatTypeFragment : Fragment() {
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        binding.vpCatType.currentItem = TabObject.tabPosition
+        _binding?.let { binding ->
+            binding.vpCatType.currentItem = TabObject.tabPosition
+        }
         sharedViewModel.getIncomeCat { showApiResultToast(false, it) }
         sharedViewModel.getExpenditureCat { showApiResultToast(false, it) }
 
@@ -97,8 +99,8 @@ class CatTypeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

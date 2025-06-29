@@ -45,7 +45,11 @@ enum class CategoryImage(val resource: Int) {
     SKINCARE(R.drawable.skincare),
     TELEVISION(R.drawable.television),
     TSHIRT(R.drawable.tshirt),
-    WIFI(R.drawable.wifi)
+    WIFI(R.drawable.wifi),
+    SALARY(R.drawable.salary),
+    INVESTMENT(R.drawable.invest),
+    REFUND(R.drawable.refund),
+    RENT(R.drawable.rent),
     ;
 }
 

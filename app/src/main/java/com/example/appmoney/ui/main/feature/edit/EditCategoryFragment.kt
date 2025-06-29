@@ -136,7 +136,11 @@ class EditCategoryFragment : Fragment(), CategoryImageListener,
             CategoryImage.SKINCARE,
             CategoryImage.TELEVISION,
             CategoryImage.TSHIRT,
-            CategoryImage.WIFI
+            CategoryImage.WIFI,
+            CategoryImage.SALARY,
+            CategoryImage.INVESTMENT,
+            CategoryImage.REFUND,
+            CategoryImage.RENT
         )
         val listColor = listOf(
             CategoryColor.BLUE,
