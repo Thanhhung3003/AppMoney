@@ -29,6 +29,7 @@ class InputViewModel : ViewModel() {
 
     private val _selectedTab = MutableLiveData<Int>()
     val selectedTab: LiveData<Int> = _selectedTab
+
     // update tab và TabObject
     fun setTab(tab: Int) {
         _selectedTab.value = tab

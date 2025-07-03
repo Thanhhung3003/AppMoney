@@ -99,7 +99,7 @@ class InputFragment : Fragment() {
         }
     }
 
-    // add Transaction----------------
+    // Thêm/update transaction
     private fun handleDoneButton() {
         val currentTab = viewModel.selectedTab.value ?: 0
         // truy xuất fragment và ép kiểu sau đó gọi getSelectedCategory() lấy category được chọn
@@ -248,6 +248,7 @@ class InputFragment : Fragment() {
         _binding = null
     }
 
+    // fragment hiển thị trở lại
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
@@ -257,7 +258,7 @@ class InputFragment : Fragment() {
             receiveDataFromBundle()
         }
     }
-
+    // Lấy dữ liệu từ Bundle
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun receiveDataFromBundle() {
         val trans = arguments?.getSerializable(BUNDLE_KEY_TRANSACTION, TransactionDetail::class.java)

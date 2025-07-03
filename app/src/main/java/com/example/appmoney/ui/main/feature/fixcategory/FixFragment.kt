@@ -146,14 +146,39 @@ class FixFragment : Fragment(), CategoryImageListener,
             CategoryImage.GAME,
             CategoryImage.BASKET,
             CategoryImage.BALL,
-            CategoryImage.EDIT
+            CategoryImage.BYCICLE,
+            CategoryImage.CALL,
+            CategoryImage.CUT,
+            CategoryImage.ELECTRIC,
+            CategoryImage.EDUCATION,
+            CategoryImage.FRUIT,
+            CategoryImage.FUELSTATION,
+            CategoryImage.GIFT,
+            CategoryImage.LIGHT,
+            CategoryImage.MEDICAL,
+            CategoryImage.MUSIC,
+            CategoryImage.SKINCARE,
+            CategoryImage.TELEVISION,
+            CategoryImage.TSHIRT,
+            CategoryImage.WIFI,
+            CategoryImage.SALARY,
+            CategoryImage.INVESTMENT,
+            CategoryImage.REFUND,
+            CategoryImage.RENT
         )
         val listColor = listOf(
             CategoryColor.BLUE,
             CategoryColor.GREEN,
             CategoryColor.ORANGE,
             CategoryColor.PURPLE,
-            CategoryColor.RED
+            CategoryColor.RED,
+            CategoryColor.PINK,
+            CategoryColor.TEAL,
+            CategoryColor.YELLOW,
+            CategoryColor.BLACK,
+            CategoryColor.GRAY,
+            CategoryColor.BROWN,
+            CategoryColor.DARK_BLUE
         )
         viewModel.loadItemsImage(listImage)
         viewModel.loadItemsColor(listColor)
